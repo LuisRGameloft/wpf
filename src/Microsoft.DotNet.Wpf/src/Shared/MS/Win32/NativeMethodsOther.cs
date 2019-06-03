@@ -130,8 +130,7 @@ namespace MS.Win32
             public   int cmdID = 0;
             [MarshalAs(UnmanagedType.U4)]
             public   int cmdf = 0;
-
-        }
+}
 
         // Helper GUID type for nullability requirement in IOleCommandTarget.Exec.
         [StructLayout(LayoutKind.Sequential)]
@@ -154,7 +153,6 @@ namespace MS.Win32
         [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]        
         internal interface IOleCommandTarget
         {
-
 	        [SecurityCritical]
             [return: MarshalAs(UnmanagedType.I4)]
             [PreserveSig]
@@ -593,7 +591,7 @@ namespace MS.Win32
             public int bmiHeader_biClrImportant;
 
 
-            // hamidm -- 03/08/2006
+            // Microsoft -- 03/08/2006
             // if the following RGBQUAD struct is added in this struct,
             // we need to update bmiHeader_biSize in the cctor to hard-coded 40
             // since it expects the size of the BITMAPINFOHEADER only
@@ -1785,7 +1783,7 @@ namespace MS.Win32
             SPACE_F_CHANNEL = 0x46434C52,  // = 'FCLR'
             SPACE_sRGB      = 0x73524742   // = 'sRGB'
         };
-        
+
         //
         // </Windows Color System (WCS) types>
         //

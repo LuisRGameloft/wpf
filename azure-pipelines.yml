@@ -1,18 +1,24 @@
-# This is a simple wrapper for eng/ci.yml to get around the limitation of
+# This is a simple wrapper for eng/pipeline.yml to get around the limitation of
 # user-defined variables not being available in yaml template expressions.
 
 # Parameters ARE available in template expressions, and parameters can have default values,
 # so they can be used to control yaml flow.
+#
 
 variables:
 
   # clean the local repo on the build agents
   Build.Repository.Clean: true
 
+
+  _PublishUsingPipelines: true
+  _DotNetArtifactsCategory: WINDOWSDESKTOP
+
 # only trigger ci builds for the master and release branches
 trigger:
 - master
 - release/3.0
+- arcade
 
 # To be added in the future when VSTS supports this feature
 # only trigger pull request builds for the master branch
@@ -25,6 +31,6 @@ jobs:
   parameters:
     ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
       # agent pool can't be read from a user-defined variable (Azure DevOps limitation)
-      agentPool: dotnet-internal-temp-vs2019
+      agentPool: dotnet-internal-vs2019-preview
       # runAsPublic is used in expressions, which can't read from user-defined variables
       runAsPublic: false

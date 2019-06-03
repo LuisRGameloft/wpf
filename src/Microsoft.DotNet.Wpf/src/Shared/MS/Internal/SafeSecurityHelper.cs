@@ -3,8 +3,6 @@
 // See the LICENSE file in the project root for more information.
 
 // Purpose:  Helper functions that require elevation but are safe to use.
-// History:
-//   10/15/04:    Microsoft        Created
 
 using System;
 using System.Collections.Generic;
@@ -521,6 +519,7 @@ namespace System.Xaml
             ThreadPool.QueueUserWorkItem(callback, state);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", Justification = "See comment above")]
         internal static void RegisterCallback(WaitCallback callback, object state)
         {
             new GCNotificationToken(callback, state);
